@@ -12,6 +12,69 @@ import AlertIcon from './Icons/AlertIcon'
 import { useFormat } from '../hooks/useFormat'
 import { useCopy } from '../hooks/useCopy'
 import { EXAMPLE_QUERY } from '../consts'
+import PropTypes from 'prop-types'
+import { memo, useCallback } from 'react'
+
+const FormatOptions = memo(({ selectedOption, setSelectedOption }) => (
+	<Select
+		size='md'
+		label='Format Options'
+		value={selectedOption}
+		onChange={e => setSelectedOption(e.target ? e.target.value : e)}
+	>
+		<Option value='Minified'>Minified</Option>
+		<Option value='Formatted'>Formatted</Option>
+	</Select>
+))
+
+FormatOptions.displayName = 'FormatOptions'
+
+FormatOptions.propTypes = {
+	selectedOption: PropTypes.string.isRequired,
+	setSelectedOption: PropTypes.func.isRequired,
+}
+
+const FormatterButtons = memo(({ handleFormat, handleCopy }) => (
+	<div className='formatter-buttons'>
+		<Button
+			id='format-button'
+			size='md'
+			title='Format the Script'
+			onClick={handleFormat}
+		>
+			<StartIcon
+				className='size-5'
+				fill='none'
+				stroke='currentColor'
+				strokeWidth='1.5'
+			/>
+			<span>Format the Script</span>
+		</Button>
+		<Button
+			id='copy-button'
+			size='md'
+			title='Copy to clipboard'
+			color='white'
+			variant='outlined'
+			onClick={handleCopy}
+		>
+			<CopyIcon
+				className='size-5'
+				fill='none'
+				stroke='currentColor'
+				strokeWidth='1.5'
+			/>
+			<span>Copy to Clipboard</span>
+		</Button>
+	</div>
+))
+
+FormatterButtons.displayName = 'FormatterButtons'
+
+FormatterButtons.propTypes = {
+	handleFormat: PropTypes.func.isRequired,
+	handleCopy: PropTypes.func.isRequired,
+}
 
 const SQLFormatter = () => {
 	const {
@@ -22,55 +85,26 @@ const SQLFormatter = () => {
 		showAlert,
 		handleFormat,
 	} = useFormat(EXAMPLE_QUERY, 'Formatted')
-
 	const { handleCopy } = useCopy(script)
+
+	const handleScriptChange = useCallback(
+		e => setScript(e.target.value),
+		[setScript]
+	)
 
 	return (
 		<div className='script-formatter'>
 			<div className='formatter-options'>
 				<div className='formatter-selector'>
-					<Select
-						size='md'
-						label='Format Options'
-						value={selectedOption}
-						onChange={e => setSelectedOption(e.target ? e.target.value : e)}
-					>
-						<Option value='Minified'>Minified</Option>
-						<Option value='Formatted'>Formatted</Option>
-					</Select>
+					<FormatOptions
+						selectedOption={selectedOption}
+						setSelectedOption={setSelectedOption}
+					/>
 				</div>
-				<div className='formatter-buttons'>
-					<Button
-						id='format-button'
-						size='md'
-						title='Format the Script'
-						onClick={handleFormat}
-					>
-						<StartIcon
-							className='size-5'
-							fill='none'
-							stroke='currentColor'
-							strokeWidth='1.5'
-						/>
-						<span>Format the Script</span>
-					</Button>
-					<Button
-						id='copy-button'
-						size='md'
-						title='Copy to clipboard'
-						color='white'
-						variant='outlined'
-						onClick={handleCopy}
-					>
-						<CopyIcon
-							className='size-5'
-							fill='none'
-							stroke='currentColor'
-							strokeWidth='1.5'
-						/>
-						<span>Copy to Clipboard</span>
-					</Button>
-				</div>
+				<FormatterButtons
+					handleFormat={handleFormat}
+					handleCopy={handleCopy}
+				/>
 			</div>
 			{showAlert && (
 				<Alert variant='outlined'>
@@ -90,7 +124,7 @@ const SQLFormatter = () => {
 				variant='outlined'
 				value={script}
 				spellCheck='false'
-				onChange={e => setScript(e.target.value)}
+				onChange={handleScriptChange}
 				className='formatter-textarea'
 			/>
 		</div>
