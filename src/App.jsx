@@ -3,8 +3,8 @@ import { SITE } from './consts.js'
 import MetaTags from './utils/MetaTags'
 
 import Header from './components/Header'
-import SQLFormatter from './components/SQLFormatter'
-import Footer from './components/Footer/Footer'
+import Formatter from './components/Formatter'
+import Footer from './components/Footer'
 
 const App = () => {
 	return (
@@ -16,7 +16,7 @@ const App = () => {
 			/>
 			<Header />
 			<main>
-				<SQLFormatter />
+				<Formatter />
 			</main>
 			<Footer />
 		</>

@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
 
-import SocialLinks from '../SocialLinks'
-import Copyright from './Copyright'
+import SocialLinks from './SocialLinks'
+import Copyright from './FooterComponents/Copyright'
 
-import '../../styles/components/footer.css'
+import '../styles/components/footer.css'
 
 const Footer = () => {
 	const CURRENT_YEAR = useMemo(() => new Date().getFullYear(), [])
