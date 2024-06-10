@@ -1,6 +1,7 @@
 export const SITE = {
 	title: 'SQLFormatter',
 	description: `Standardize and format your SQL scripts comfortably. Compatible with MariaDB, MySQL, SQL Server, PostgreSQL and SQLite`,
+	shortDescription: `Format SQL Scripts`,
 	url: 'https://sqlformatter.galgar.dev',
 	author: 'Galgar.dev',
 }
