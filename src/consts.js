@@ -3,6 +3,7 @@ export const SITE = {
 	description: `Standardize and format your SQL scripts comfortably. Compatible with MariaDB, MySQL, SQL Server, PostgreSQL and SQLite`,
 	shortDescription: `Format SQL Scripts`,
 	url: 'https://sqlformatter.galgar.dev',
+	language: 'en',
 	author: 'Galgar.dev',
 	keywords: [
 		'SQLFormatter',
@@ -16,6 +17,8 @@ export const SITE = {
 		'PostgreSQL',
 		'SQLite',
 	],
+	featuredImage: '/assets/img/featured-image.png',
+	accentColor: 'ffc629',
 }
 
 export const EXAMPLE_QUERY = `-- Your SQL Script goes here
