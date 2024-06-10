@@ -12,6 +12,7 @@ const App = () => {
 			<MetaTags
 				title={SITE.title}
 				description={SITE.description}
+				author={SITE.author}
 			/>
 			<Header />
 			<main>
