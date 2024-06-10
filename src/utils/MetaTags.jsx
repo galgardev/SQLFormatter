@@ -16,6 +16,9 @@ const MetaTags = ({
 		document
 			.querySelector('meta[name="keywords"]')
 			.setAttribute('content', keywords.join(', '))
+		document
+			.querySelector('meta[name="author"]')
+			.setAttribute('content', author)
 	}, [title, description, shortDescription, author, keywords])
 
 	return null
