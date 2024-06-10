@@ -14,6 +14,7 @@ const App = () => {
 				description={SITE.description}
 				shortDescription={SITE.shortDescription}
 				author={SITE.author}
+				keywords={SITE.keywords}
 			/>
 			<Header />
 			<main>

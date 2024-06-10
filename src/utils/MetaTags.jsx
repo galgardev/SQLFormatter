@@ -1,13 +1,22 @@
 import PropTypes from 'prop-types'
 import { useEffect } from 'react'
 
-const MetaTags = ({ title, description, shortDescription, author }) => {
+const MetaTags = ({
+	title,
+	description,
+	shortDescription,
+	author,
+	keywords,
+}) => {
 	useEffect(() => {
 		document.title = title + ' - ' + shortDescription + ' | ' + author
 		document
 			.querySelector('meta[name="description"]')
 			.setAttribute('content', description)
-	}, [title, description, shortDescription, author])
+		document
+			.querySelector('meta[name="keywords"]')
+			.setAttribute('content', keywords.join(', '))
+	}, [title, description, shortDescription, author, keywords])
 
 	return null
 }
@@ -17,6 +26,7 @@ MetaTags.propTypes = {
 	description: PropTypes.string.isRequired,
 	shortDescription: PropTypes.string.isRequired,
 	author: PropTypes.string.isRequired,
+	keywords: PropTypes.array.isRequired,
 }
 
 export default MetaTags

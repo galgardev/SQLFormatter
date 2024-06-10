@@ -4,6 +4,18 @@ export const SITE = {
 	shortDescription: `Format SQL Scripts`,
 	url: 'https://sqlformatter.galgar.dev',
 	author: 'Galgar.dev',
+	keywords: [
+		'SQLFormatter',
+		'SQL Formatter',
+		'Format SQL Scripts',
+		'SQL Beautify',
+		'SQL Beautifier',
+		'MariaDB',
+		'MySQL',
+		'SQL Server',
+		'PostgreSQL',
+		'SQLite',
+	],
 }
 
 export const EXAMPLE_QUERY = `-- Your SQL Script goes here
