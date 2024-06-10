@@ -5,8 +5,29 @@ export const SITE = {
 	author: 'Galgar.dev',
 }
 
-export const PAGES = [
-	{ name: 'Home', href: '/' },
-	{ name: 'Docs', href: '/docs' },
-	{ name: 'About', href: '/about' },
-]
+export const EXAMPLE_QUERY = `-- Your SQL Script goes here
+SELECT
+    e.EmployeeName,
+    d.DepartmentName,
+    COUNT(p.ProjectID) AS NumberOfProjects
+FROM
+    employees e
+    JOIN projects p ON e.EmployeeID = p.EmployeeID
+    JOIN departments d ON e.DepartmentID = d.DepartmentID
+WHERE
+    e.EmployeeAge > 30
+    AND p.ProjectID IN (
+        SELECT
+            ProjectID
+        FROM
+            projects
+        WHERE
+            YEAR (StartDate) = YEAR (GETDATE ())
+    )
+GROUP BY
+    e.EmployeeName,
+    d.DepartmentName
+HAVING
+    COUNT(p.ProjectID) > 2
+ORDER BY
+    NumberOfProjects DESC;`
