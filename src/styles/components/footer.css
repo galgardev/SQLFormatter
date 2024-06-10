@@ -1,0 +1,19 @@
+@tailwind components;
+
+@layer components {
+	.footer-container {
+		@apply select-none px-8;
+
+		.footer-elements {
+			@apply flex w-full flex-col items-center justify-center py-2 md:flex-row md:justify-between;
+		}
+
+		.copyright-content {
+			@apply my-2 text-center font-normal md:mb-0 md:mt-0;
+
+			.copyright-link {
+				@apply inline-block text-sm font-normal;
+			}
+		}
+	}
+}

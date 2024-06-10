@@ -1,0 +1,167 @@
+@tailwind components;
+
+@layer components {
+	.script-formatter {
+		@apply flex grow flex-col gap-4 px-2;
+
+		/* Alert */
+		div[role='alert'] {
+			@apply border-red-500;
+
+			div {
+				@apply flex items-center gap-2;
+			}
+		}
+
+		/* Textarea container */
+		> div:not([role='alert']):not(.formatter-options) {
+			@apply mt-2 flex grow;
+		}
+
+		/* Textarea */
+
+		.formatter-textarea {
+			@apply font-mono
+            h-auto
+            border-[1px]
+            border-gray-500
+            border-t-transparent
+            p-6
+            text-inherit
+            focus:border-[1px]
+            focus:border-white
+            focus:border-t-transparent;
+		}
+
+		.formatter-textarea + label {
+			@apply !text-white
+            before:border-gray-500
+            after:border-gray-500;
+		}
+
+		.formatter-textarea:focus + label {
+			@apply text-white
+            before:border-l-[1px]
+            before:border-t-[1px]
+            before:!border-white
+            after:border-r-[1px]
+            after:border-t-[1px]
+            after:!border-white;
+		}
+
+		/* Options */
+
+		.formatter-options {
+			@apply flex
+            flex-col
+            items-center
+			justify-between
+			gap-4
+            sm:flex-row
+            sm:items-end
+            md:items-center;
+
+			/* Select */
+
+			.formatter-selector {
+				@apply md:w-72;
+
+				/* Select button */
+
+				button {
+					@apply border-[1px] text-inherit;
+
+					div {
+						@apply text-inherit;
+					}
+				}
+
+				button[aria-expanded='false'] {
+					@apply border-gray-500;
+				}
+
+				button[aria-expanded='false']:has(span:not(:empty)) {
+					border-top-color: transparent;
+				}
+
+				button[aria-expanded='true'] {
+					@apply border-white border-t-transparent;
+				}
+
+				button + label {
+					@apply text-inherit
+                    md:before:border-l-[1px]
+                    md:before:border-t-[1px]
+                    md:after:border-r-[1px]
+                    md:after:border-t-[1px];
+				}
+
+				button[aria-expanded='false'] + label {
+					@apply before:border-gray-500
+                    after:border-gray-500;
+				}
+
+				button[aria-expanded='false']:has(span:not(:empty)) + label {
+					@apply text-gray-400;
+				}
+
+				button[aria-expanded='true'] + label {
+					@apply before:border-l-[1px]
+                    before:border-t-[1px]
+                    before:border-white
+                    after:border-r-[1px]
+                    after:border-t-[1px]
+                    after:border-white;
+				}
+
+				/* Select list */
+
+				ul {
+					@apply mt-1
+                    bg-gray-900
+                    text-inherit;
+
+					li {
+						@apply list-none
+                        hover:bg-gray-800
+                        hover:text-inherit;
+					}
+
+					li[data-selected='true'] {
+						@apply bg-inherit
+                        text-accent
+                        hover:bg-gray-800;
+					}
+				}
+			}
+
+			/* Buttons */
+
+			.formatter-buttons {
+				@apply flex
+                flex-col
+                gap-4
+                md:flex-row;
+
+				button {
+					@apply flex
+                    items-center
+                    justify-center
+                    gap-2
+                    rounded-md
+                    py-[0.55rem]
+                    ring-0
+                    lg:min-w-56;
+				}
+
+				#format-button {
+					@apply bg-accent;
+
+					* {
+						@apply text-gray-900;
+					}
+				}
+			}
+		}
+	}
+}

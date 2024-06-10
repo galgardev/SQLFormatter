@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		@apply scroll-smooth selection:rounded-xl selection:bg-accent selection:text-gray-900;
+	}
+
+	@font-face {
+		font-display: block;
+		font-family: 'Figtree', sans-serif;
+		font-optical-sizing: auto;
+		font-style: normal;
+		font-weight: 400;
+		src: url('/assets/fonts/figtree-regular.woff2') format('woff2');
+	}
+
+	@font-face {
+		font-display: block;
+		font-family: 'Fira Code', monospace;
+		font-optical-sizing: auto;
+		font-style: normal;
+		font-weight: 400;
+		src: url('/assets/fonts/firacode-regular.woff2') format('woff2');
+	}
+
+	body {
+		@apply bg-gray-900 text-white;
+	}
+
+	* {
+		::-webkit-scrollbar {
+			@apply w-2;
+		}
+
+		::-webkit-scrollbar-track {
+			@apply cursor-default rounded-full bg-gray-800;
+		}
+
+		::-webkit-scrollbar-thumb {
+			@apply cursor-default rounded-full bg-accent;
+		}
+	}
+}
+
+@layer components {
+	#root {
+		@apply mx-auto flex min-h-screen max-w-screen-xl flex-col justify-between;
+	}
+
+	main {
+		@apply prose flex min-w-full grow flex-col justify-center px-6 pt-3;
+	}
+
+	.prose,
+	.prose * {
+		@apply text-white;
+	}
+}
+
+@layer utilities {
+	.prose {
+		@apply text-inherit;
+	}
+
+	.custom-link {
+		@apply text-accent transition-all duration-200 hover:underline;
+	}
+}
